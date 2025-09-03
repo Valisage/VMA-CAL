@@ -161,17 +161,17 @@ const CalculoFacturacion = () => {
         </div>
 
         {/* ====== Detalle de facturación (dos columnas) ====== */}
-        <section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " h-8 leading-none flex items-center text-[clamp(11px,2.6vw,14px)] sm:text-sm"}>Detalle de facturación</div>
+        {facturacion && (<section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " h-8 leading-none flex items-center text-sm"}>Detalle de facturación</div>
           <div className="bg-white">
-            <table className="w-full table-fixed border-collapse text-[clamp(12px,2.8vw,14px)] sm:text-sm">
+            <table className="w-full table-fixed border-collapse text-sm">
               <colgroup>
                 <col style={{ width: "70%" }} />
                 <col style={{ width: "30%" }} />
               </colgroup>
               <thead>
                 <tr>
-                  <th className={TH + " h-8 text-left whitespace-nowrap text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-none"}>Concepto</th>
-                  <th className={TH + " h-8 text-center whitespace-nowrap text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-none"}>Importe (S/)</th>
+                  <th className={TH + " h-8 text-left whitespace-nowrap text-sm leading-none"}>Concepto</th>
+                  <th className={TH + " h-8 text-center whitespace-nowrap text-sm leading-none"}>Importe (S/)</th>
                 </tr>
               </thead>
               <tbody>
@@ -229,6 +229,7 @@ const CalculoFacturacion = () => {
             </table>
           </div>
         </section>
+        )}
 
         {/* ====== Pie ====== */}
         <footer className="text-center text-[11px] text-slate-600 flex flex-col items-center gap-1">
@@ -254,3 +255,4 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
+
