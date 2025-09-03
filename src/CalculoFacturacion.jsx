@@ -64,9 +64,9 @@ const CalculoFacturacion = () => {
 
         {/* ====== Datos de entrada (tabla) ====== */}
         <section className="border border-slate-300 rounded-md overflow-hidden">
-          <div className={TH + " h-8 leading-none flex items-center text-sm"}>Datos de entrada</div>
+          <div className={TH + " h-8 leading-none flex items-center text-xs sm:text-sm"}>Datos de entrada</div>
           <div className="bg-white">
-            <table className="w-full table-fixed border-collapse text-sm">
+            <table className="w-full table-fixed border-collapse text-xs sm:text-sm">
               <colgroup>
                 <col style={{ width: "50%" }} />
                 <col style={{ width: "50%" }} />
@@ -161,17 +161,17 @@ const CalculoFacturacion = () => {
         </div>
 
         {/* ====== Detalle de facturación (dos columnas) ====== */}
-        {facturacion && (<section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " h-8 leading-none flex items-center text-sm"}>Detalle de facturación</div>
+        {facturacion && (<section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " h-8 leading-none flex items-center text-xs sm:text-sm"}>Detalle de facturación</div>
           <div className="bg-white">
-            <table className="w-full table-fixed border-collapse text-sm">
+            <table className="w-full table-fixed border-collapse text-xs sm:text-sm">
               <colgroup>
                 <col style={{ width: "70%" }} />
                 <col style={{ width: "30%" }} />
               </colgroup>
               <thead>
                 <tr>
-                  <th className={TH + " h-8 text-left whitespace-nowrap text-sm leading-none"}>Concepto</th>
-                  <th className={TH + " h-8 text-center whitespace-nowrap text-sm leading-none"}>Importe (S/)</th>
+                  <th className={TH + " h-8 text-left whitespace-nowrap text-xs sm:text-sm leading-none"}>Concepto</th>
+                  <th className={TH + " h-8 text-center whitespace-nowrap text-xs sm:text-sm leading-none"}>Importe (S/)</th>
                 </tr>
               </thead>
               <tbody>
@@ -255,4 +255,3 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
-
