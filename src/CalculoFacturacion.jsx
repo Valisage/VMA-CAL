@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // ====== Estilos reutilizables ======
-const TD = "border border-slate-300 px-2 py-1 break-words [overflow-wrap:anywhere] [hyphens:auto]";
+const TD = "border border-slate-300 px-2 py-1 leading-tight break-words [overflow-wrap:anywhere] [hyphens:auto]";
 const TD_RIGHT = TD + " text-right tabular-nums";
 const TH = TD + " bg-slate-100 font-semibold text-slate-700";
 
@@ -53,7 +53,7 @@ const CalculoFacturacion = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-start py-3 px-3">
-      <div className="w-full max-w-6xl space-y-3">
+      <div className="mx-auto max-w-7xl p-4 space-y-3">
         {/* ====== Header (igual al modelo) ====== */}
         <header className="border-b border-slate-200 pb-1">
           <h1 className="text-xl sm:text-2xl font-semibold">Calculadora de Facturación VMA</h1>
@@ -267,3 +267,4 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
+
