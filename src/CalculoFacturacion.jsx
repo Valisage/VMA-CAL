@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // ====== Estilos reutilizables ======
-const TD = "border border-slate-300 px-2 py-1 leading-tight break-words [overflow-wrap:anywhere] [hyphens:auto]";
+const TD = "border border-slate-300 px-2 py-0 whitespace-normal break-words";
 const TD_RIGHT = TD + " text-right tabular-nums";
 const TH = TD + " bg-slate-100 font-semibold text-slate-700";
 
@@ -58,179 +58,166 @@ const CalculoFacturacion = () => {
         <header className="border-b border-slate-200 pb-1">
           <h1 className="text-xl sm:text-2xl font-semibold">Calculadora de Facturación VMA</h1>
           <div className="text-xs sm:text-sm text-slate-600">
-            Estimación basada en la Resolución de Consejo Directivo Nº 011-2020-SUNASS-CD y en la Estructura Tarifaria vigente para Lima y Callao.
+            Basado en el D.S. 010-2019-VIVIENDA, la R.C.D. 011-2020-SUNASS-CD y la estructura tarifaria vigente para Lima y Callao.
           </div>
         </header>
 
         {/* ====== Datos de entrada (tabla) ====== */}
         <section className="border border-slate-300 rounded-md overflow-hidden">
-          <div className={TH + " text-[clamp(11px,2.6vw,14px)] sm:text-sm text-center uppercase"}>Datos de entrada</div>
+          <div className={TH + " h-8 leading-none flex items-center text-sm"}>Datos de entrada</div>
           <div className="bg-white">
-            <table className="w-full table-fixed border-collapse text-[clamp(12px,2.8vw,14px)] sm:text-sm">
+            <table className="w-full table-fixed border-collapse text-sm">
               <colgroup>
-                <col style={{ width: "76%" }} />
-                <col style={{ width: "24%" }} />
+                <col style={{ width: "50%" }} />
+                <col style={{ width: "50%" }} />
               </colgroup>
               <tbody>
                 <tr className="">
-                  <td className={TD}>Tipo de usuario</td>
-                  <td className={TD}>
-                    <label htmlFor="tipoUsuario" className="sr-only">Tipo de usuario</label>
-                    <select
+                  <td className={TD}><div className="h-8 leading-none flex items-center">Tipo de usuario</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="tipoUsuario" className="sr-only">Tipo de usuario</label><select
                       id="tipoUsuario"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={tipoUsuario}
-                      onChange={(e) => setTipoUsuario(e.target.value)}
+                      onChange={(e) =>setTipoUsuario(e.target.value)}
                     >
                       <option value="Comercial y Otros">Comercial y Otros</option>
-                      <option value="Industrial">Industrial</option>
-                    </select>
-                  </td>
+                      <option value="Industrial">Industrial</option></select></div></td>
                 </tr>
                 <tr className="">
-                  <td className={TD}>Consumo de agua (m³)</td>
-                  <td className={TD}>
-                    <label htmlFor="consumo" className="sr-only">Consumo de agua (m³)</label>
-                    <input
+                  <td className={TD}><div className="h-8 leading-none flex items-center">Consumo de agua (m³)</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="consumo" className="sr-only">Consumo de agua (m³)</label><input
                       id="consumo"
                       type="number"
                       inputMode="decimal"
                       placeholder="Ingresa consumo de agua"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={consumo}
                       onChange={(e) => setConsumo(e.target.value)}
-                    />
-                  </td>
+                    /></div></td>
                 </tr>
                 <tr className="">
-                  <td className={TD}>DBO₅ (mg/L)</td>
-                  <td className={TD}>
-                    <label htmlFor="dbo" className="sr-only">DBO₅ (mg/L)</label>
-                    <input
+                  <td className={TD}><div className="h-8 leading-none flex items-center">DBO₅ (mg/L)</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="dbo" className="sr-only">DBO₅ (mg/L)</label><input
                       id="dbo"
                       type="number"
                       inputMode="decimal"
                       placeholder="VMA: 500 mg/L"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={dbo}
                       onChange={(e) => setDbo(e.target.value)}
-                    />
-                  </td>
+                    /></div></td>
                 </tr>
                 <tr className="">
-                  <td className={TD}>DQO (mg/L)</td>
-                  <td className={TD}>
-                    <label htmlFor="dqo" className="sr-only">DQO (mg/L)</label>
-                    <input
+                  <td className={TD}><div className="h-8 leading-none flex items-center">DQO (mg/L)</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="dqo" className="sr-only">DQO (mg/L)</label><input
                       id="dqo"
                       type="number"
                       inputMode="decimal"
                       placeholder="VMA: 1000 mg/L"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={dqo}
                       onChange={(e) => setDqo(e.target.value)}
-                    />
-                  </td>
+                    /></div></td>
                 </tr>
                 <tr className="">
-                  <td className={TD}>SST (mg/L)</td>
-                  <td className={TD}>
-                    <label htmlFor="sst" className="sr-only">SST (mg/L)</label>
-                    <input
+                  <td className={TD}><div className="h-8 leading-none flex items-center">SST (mg/L)</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="sst" className="sr-only">SST (mg/L)</label><input
                       id="sst"
                       type="number"
                       inputMode="decimal"
                       placeholder="VMA: 500 mg/L"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={sst}
                       onChange={(e) => setSst(e.target.value)}
-                    />
-                  </td>
+                    /></div></td>
                 </tr>
                 <tr className="">
-                  <td className={TD}>Aceites y grasas (mg/L)</td>
-                  <td className={TD}>
-                    <label htmlFor="ayg" className="sr-only">Aceites y grasas (mg/L)</label>
-                    <input
+                  <td className={TD}><div className="h-8 leading-none flex items-center">Aceites y grasas (mg/L)</div></td>
+                  <td className={TD}><div className="h-8 leading-none flex items-center w-full"><label htmlFor="ayg" className="sr-only">Aceites y grasas (mg/L)</label><input
                       id="ayg"
                       type="number"
                       inputMode="decimal"
                       placeholder="VMA: 100 mg/L"
-                      className="w-full px-2 py-1 rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
+                      className="w-full px-2 h-8 leading-none rounded-md bg-white border border-slate-300 outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:border-blue-500"
                       value={ayg}
                       onChange={(e) => setAyg(e.target.value)}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td className={TD} colSpan={2}>
-                    <button
-                      className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md font-semibold transition duration-300 text-sm"
-                      onClick={calcularFacturacion}
-                    >
-                      Calcular Facturación
-                    </button>
-                  </td>
+                    /></div></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
+
+        {/* Botón fuera del cuadro de datos de entrada */}
+        <div className="mt-3">
+          <button
+            type="button"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md font-semibold transition duration-300 text-sm"
+            onClick={calcularFacturacion}
+          >
+            Calcular Facturación
+          </button>
+        </div>
+
         {/* ====== Detalle de facturación (dos columnas) ====== */}
-        <section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " text-[clamp(11px,2.6vw,14px)] sm:text-sm text-center uppercase"}>Detalle de facturación</div>
+        <section className="border border-slate-300 rounded-md overflow-hidden mt-4 sm:mt-5"><div className={TH + " h-8 leading-none flex items-center text-[clamp(11px,2.6vw,14px)] sm:text-sm"}>Detalle de facturación</div>
           <div className="bg-white">
             <table className="w-full table-fixed border-collapse text-[clamp(12px,2.8vw,14px)] sm:text-sm">
               <colgroup>
-                <col style={{ width: "76%" }} />
-                <col style={{ width: "24%" }} />
+                <col style={{ width: "70%" }} />
+                <col style={{ width: "30%" }} />
               </colgroup>
               <thead>
                 <tr>
-                  <th className={TH + " text-left text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-tight"}>Concepto</th>
-                  <th className={TH + " text-center text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-tight"}>Importe (S/)</th>
+                  <th className={TH + " h-8 text-left whitespace-nowrap text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-none"}>Concepto</th>
+                  <th className={TH + " h-8 text-center whitespace-nowrap text-[clamp(11px,2.6vw,14px)] sm:text-sm leading-none"}>Importe (S/)</th>
                 </tr>
               </thead>
               <tbody>
                 {facturacion ? (
                   <>
                     <tr className="">
-                      <td className={TD}>Agua potable</td>
-                      <td className={TD_RIGHT}>{facturacion.costoAgua.toFixed(2)}</td>
+                      <td className={TD}><div className="h-8 leading-none flex items-center">Agua potable</div></td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.costoAgua.toFixed(2)}</div></td>
                     </tr>
                     <tr className="">
-                      <td className={TD}>Servicio de alcantarillado</td>
-                      <td className={TD_RIGHT}>{facturacion.costoAlcantarillado.toFixed(2)}</td>
+                      <td className={TD}><div className="h-8 leading-none flex items-center">Servicio de alcantarillado</div></td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.costoAlcantarillado.toFixed(2)}</div></td>
                     </tr>
                     <tr className="">
-                      <td className={TD}>Cargo fijo</td>
-                      <td className={TD_RIGHT}>{facturacion.cargoFijo.toFixed(2)}</td>
+                      <td className={TD}><div className="h-8 leading-none flex items-center">Cargo fijo</div></td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.cargoFijo.toFixed(2)}</div></td>
                     </tr>
-                    <tr className="">
-                      <td className={TD}>Costo de análisis</td>
-                      <td className={TD_RIGHT}>{facturacion.costoAnalisis.toFixed(2)}</td>
-                    </tr>
-                    <tr className="">
+                    <tr className="bg-red-100">
                       <td className={TD}>
-                        <div className="flex items-baseline justify-between gap-2">
+                        <div className="h-8 leading-none flex items-center">
+                          <span>Costo de análisis</span>
+                        </div>
+                      </td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.costoAnalisis.toFixed(2)}</div></td>
+                    </tr>
+                    <tr className="bg-red-100">
+                      <td className={TD}>
+                        <div className="h-8 leading-none flex items-center justify-between gap-2">
                           <span>Pago por exceso de concentración</span>
                           <span className="ml-2 tabular-nums whitespace-nowrap">{facturacion.costoAlcantarillado.toFixed(2)} × {(facturacion.factorAjusteTotal * 100).toFixed(0)}%</span>
                         </div>
                       </td>
-                      <td className={TD_RIGHT}>{facturacion.pagoExcesoConcentracion.toFixed(2)}</td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.pagoExcesoConcentracion.toFixed(2)}</div></td>
                     </tr>
                     <tr className="bg-white">
-                      <td className={TD + " font-medium"}>
-                        <div className="flex items-baseline justify-between gap-2">
+                      <td className={TD}>
+                        <div className="h-8 leading-none flex items-center justify-between gap-2">
                           <span>IGV</span>
                           <span className="ml-2 tabular-nums whitespace-nowrap">{facturacion.baseIgv.toFixed(2)} × 18%</span>
                         </div>
                       </td>
-                      <td className={TD_RIGHT}>{facturacion.igv.toFixed(2)}</td>
+                      <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.igv.toFixed(2)}</div></td>
                     </tr>
                     <tr>
-                      <td className={TD + " font-semibold"}>Total</td>
-                      <td className={TD_RIGHT + " font-semibold"}>{facturacion.total.toFixed(2)}</td>
+                      <td className={TD + " font-semibold"}><div className="h-8 leading-none flex items-center">TOTAL</div></td>
+                      <td className={TD_RIGHT + " font-semibold"}><div className="h-8 leading-none flex items-center justify-end">{facturacion.total.toFixed(2)}</div></td>
                     </tr>
                   </>
                 ) : (
@@ -267,4 +254,3 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
-
