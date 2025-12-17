@@ -11,7 +11,7 @@ const COMPANY = {
   tagline: "Tratamiento de aguas residuales comerciales e industriales",
   phone: "905 629 167",
   waNumberRaw: "51905629167", // para wa.me se usa sin '+' ni espacios
-  // Enlace directo a imagen (termina en .png/.jpg/.svg)
+  // Usa el enlace directo del logo (termina en .png/.jpg/.svg). Este es tu i.ibb.co con extensión:
   logoSrc: "https://i.ibb.co/XZpNpmyt/Logo.png",
 };
 
@@ -24,7 +24,7 @@ const CalculoFacturacion = () => {
   const [ayg, setAyg] = useState("");
   const [facturacion, setFacturacion] = useState(null);
 
-  // Control de logo con fallback local si la URL falla
+  // Control de logo con fallback (JS puro, sin TS)
   const [logoUrl, setLogoUrl] = useState(COMPANY.logoSrc);
 
   const calcularFacturacion = () => {
@@ -72,19 +72,19 @@ const CalculoFacturacion = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-start py-3 px-3">
       <div className="mx-auto max-w-7xl p-4 space-y-3">
-        {/* ====== Encabezado de empresa ====== */}
+        {/* ====== Encabezado de empresa (mismo estilo que la otra app) ====== */}
         <section className="border-b border-slate-300 pb-3">
           <div className="flex items-center gap-3 flex-wrap">
             <img
               src={logoUrl}
               alt={COMPANY.name}
-              className="object-contain bg-white rounded"
-              style={{ width: 14, height: 14 }}   // ← tamaño unificado 14x14 px
+              className="w-14 h-14 object-contain bg-white rounded"
+              referrerPolicy="no-referrer"
               onError={(e) => {
                 if (logoUrl !== "/logo.svg") {
                   setLogoUrl("/logo.svg");
                 } else {
-                  e.currentTarget.style.display = "none"; // JSX/JS válido
+                  e.currentTarget.style.display = "none";
                 }
               }}
             />
