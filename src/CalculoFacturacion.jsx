@@ -11,7 +11,7 @@ const COMPANY = {
   tagline: "Tratamiento de aguas residuales comerciales e industriales",
   phone: "905 629 167",
   waNumberRaw: "51905629167", // para wa.me se usa sin '+' ni espacios
-  // Sube tu logo a public/logo.svg en tu repo (o cambia por una URL externa)
+  // Enlace directo a imagen (png/jpg/svg). Recomendado: /public/logo.svg
   logoSrc: "https://i.ibb.co/XZpNpmyt/Logo.png",
 };
 
@@ -24,8 +24,7 @@ const CalculoFacturacion = () => {
   const [ayg, setAyg] = useState("");
   const [facturacion, setFacturacion] = useState<any>(null);
 
-  // Si quieres usar una URL externa para el logo, reemplaza COMPANY.logoSrc.
-  // Nota: si usas imgbb, usa el enlace "i.ibb.co/..." que termina en .png/.jpg/.svg.
+  // Si usas imgbb, usa el enlace directo (termina en .png/.jpg/.svg)
   const [logoUrl, setLogoUrl] = useState<string>(COMPANY.logoSrc);
 
   const calcularFacturacion = () => {
@@ -73,19 +72,20 @@ const CalculoFacturacion = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-start py-3 px-3">
       <div className="mx-auto max-w-7xl p-4 space-y-3">
-        {/* ====== Encabezado de empresa (igual al del otro módulo) ====== */}
+        {/* ====== Encabezado de empresa ====== */}
         <section className="border-b border-slate-300 pb-3">
           <div className="flex items-center gap-3 flex-wrap">
             <img
               src={logoUrl}
               alt={COMPANY.name}
-              className="w-12 h-12 object-contain bg-white rounded"
+              // 14x14 px exactos:
+              className="w-[14px] h-[14px] object-contain bg-white rounded"
               referrerPolicy="no-referrer"
-              onError={(e) => {
+              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                 if (logoUrl !== "/logo.svg") {
                   setLogoUrl("/logo.svg");
                 } else {
-                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                  e.currentTarget.style.display = "none";
                 }
               }}
             />
@@ -323,3 +323,4 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
+
