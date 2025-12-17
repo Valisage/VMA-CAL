@@ -22,10 +22,10 @@ const CalculoFacturacion = () => {
   const [dqo, setDqo] = useState("");
   const [sst, setSst] = useState("");
   const [ayg, setAyg] = useState("");
-  const [facturacion, setFacturacion] = useState<any>(null);
+  const [facturacion, setFacturacion] = useState(null);
 
   // Si usas imgbb, usa el enlace directo (termina en .png/.jpg/.svg)
-  const [logoUrl, setLogoUrl] = useState<string>(COMPANY.logoSrc);
+  const [logoUrl, setLogoUrl] = useState(COMPANY.logoSrc);
 
   const calcularFacturacion = () => {
     const c = parseFloat(consumo || "0");
@@ -81,7 +81,7 @@ const CalculoFacturacion = () => {
               // 14x14 px exactos:
               className="w-[14px] h-[14px] object-contain bg-white rounded"
               referrerPolicy="no-referrer"
-              onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+              onError={(e) => {
                 if (logoUrl !== "/logo.svg") {
                   setLogoUrl("/logo.svg");
                 } else {
@@ -323,4 +323,3 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
-
