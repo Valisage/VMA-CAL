@@ -11,7 +11,7 @@ const COMPANY = {
   tagline: "Tratamiento de aguas residuales comerciales e industriales",
   phone: "905 629 167",
   waNumberRaw: "51905629167", // para wa.me se usa sin '+' ni espacios
-  // Usa el enlace directo a la imagen (termina en .png/.jpg/.svg)
+  // Enlace directo a imagen (termina en .png/.jpg/.svg)
   logoSrc: "https://i.ibb.co/XZpNpmyt/Logo.png",
 };
 
@@ -79,12 +79,12 @@ const CalculoFacturacion = () => {
               src={logoUrl}
               alt={COMPANY.name}
               className="object-contain bg-white rounded"
-              style={{ width: 14, height: 14 }}   // ← tamaño unificado 14x14
+              style={{ width: 14, height: 14 }}   // ← tamaño unificado 14x14 px
               onError={(e) => {
                 if (logoUrl !== "/logo.svg") {
                   setLogoUrl("/logo.svg");
                 } else {
-                  e.currentTarget.style.display = "none"; // JSX: sin "as HTMLImageElement"
+                  e.currentTarget.style.display = "none"; // JSX/JS válido
                 }
               }}
             />
@@ -322,4 +322,3 @@ const CalculoFacturacion = () => {
 };
 
 export default CalculoFacturacion;
-
