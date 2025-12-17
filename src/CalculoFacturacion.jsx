@@ -11,7 +11,7 @@ const COMPANY = {
   tagline: "Tratamiento de aguas residuales comerciales e industriales",
   phone: "905 629 167",
   waNumberRaw: "51905629167", // para wa.me se usa sin '+' ni espacios
-  // Enlace directo a imagen (png/jpg/svg). Recomendado: /public/logo.svg
+  // Usa el enlace directo a la imagen (termina en .png/.jpg/.svg)
   logoSrc: "https://i.ibb.co/XZpNpmyt/Logo.png",
 };
 
@@ -24,7 +24,7 @@ const CalculoFacturacion = () => {
   const [ayg, setAyg] = useState("");
   const [facturacion, setFacturacion] = useState(null);
 
-  // Si usas imgbb, usa el enlace directo (termina en .png/.jpg/.svg)
+  // Control de logo con fallback local si la URL falla
   const [logoUrl, setLogoUrl] = useState(COMPANY.logoSrc);
 
   const calcularFacturacion = () => {
@@ -78,14 +78,13 @@ const CalculoFacturacion = () => {
             <img
               src={logoUrl}
               alt={COMPANY.name}
-              // 14x14 px exactos:
-              className="w-[14px] h-[14px] object-contain bg-white rounded"
-              referrerPolicy="no-referrer"
+              className="object-contain bg-white rounded"
+              style={{ width: 14, height: 14 }}   // ← tamaño unificado 14x14
               onError={(e) => {
                 if (logoUrl !== "/logo.svg") {
                   setLogoUrl("/logo.svg");
                 } else {
-                  e.currentTarget.style.display = "none";
+                  e.currentTarget.style.display = "none"; // JSX: sin "as HTMLImageElement"
                 }
               }}
             />
@@ -291,7 +290,9 @@ const CalculoFacturacion = () => {
                       <td className={TD}>
                         <div className="h-8 leading-none flex items-center justify-between gap-2">
                           <span>Pago por exceso de concentración</span>
-                          <span className="ml-2 tabular-nums whitespace-nowrap">{facturacion.costoAlcantarillado.toFixed(2)} × {(facturacion.factorAjusteTotal * 100).toFixed(0)}%</span>
+                          <span className="ml-2 tabular-nums whitespace-nowrap">
+                            {facturacion.costoAlcantarillado.toFixed(2)} × {(facturacion.factorAjusteTotal * 100).toFixed(0)}%
+                          </span>
                         </div>
                       </td>
                       <td className={TD_RIGHT}><div className="h-8 leading-none flex items-center justify-end">{facturacion.pagoExcesoConcentracion.toFixed(2)}</div></td>
@@ -315,11 +316,10 @@ const CalculoFacturacion = () => {
             </div>
           </section>
         )}
-
-        {/* (Sin footer, a pedido) */}
       </div>
     </div>
   );
 };
 
 export default CalculoFacturacion;
+
